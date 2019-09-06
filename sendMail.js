@@ -13,7 +13,6 @@ let transporter = nodemailer.createTransport({
 })
 
 function sendMail(message) {
-  console.log('要发邮件了')
   let mailOptions = {
     from: '"1107334911" <1107334911@qq.com>', // 发送地址
     to: '1107334911@qq.com', // 接收者
@@ -22,7 +21,6 @@ function sendMail(message) {
   }
   // send mail with defined transport object
   transporter.sendMail(mailOptions, (error, info) => {
-    console.log('真发了')
     if (error) {
       return console.log(error)
     }

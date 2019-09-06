@@ -32,7 +32,6 @@ let server = http.createServer(function(req, res) {
       if (event == 'push') {
         //开始布署
         let payload = JSON.parse(body)
-        console.log('开始部署了')
         let child = spawn('sh', [`./${payload.repository.name}.sh`])
         let buffers = []
         child.stdout.on('data', function(buffer) {
@@ -40,7 +39,6 @@ let server = http.createServer(function(req, res) {
         })
         child.stdout.on('end', function(buffer) {
           let logs = Buffer.concat(buffers).toString()
-          console.log(logs)
           sendMail(`<h1>部署日期: ${new Date()}</h1>
             <h2>部署人: ${payload.pusher.name}</h2>
             <h2>部署邮箱: ${payload.pusher.email}</h2>
