@@ -32,6 +32,7 @@ let server = http.createServer(function(req, res) {
       if (event == 'push') {
         //开始布署
         let payload = JSON.parse(body)
+        console.log('开始布署了', payload.repository.name)
         let child = spawn('sh', [`./${payload.repository.name}.sh`])
         let buffers = []
         child.stdout.on('data', function(buffer) {
