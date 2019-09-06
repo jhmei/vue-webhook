@@ -40,7 +40,7 @@ let server = http.createServer(function(req, res) {
         })
         child.stdout.on('end', function(buffer) {
           let logs = Buffer.concat(buffers).toString()
-          console.log('要发邮件了', logs)
+          console.log(logs)
           sendMail(`<h1>部署日期: ${new Date()}</h1>
             <h2>部署人: ${payload.pusher.name}</h2>
             <h2>部署邮箱: ${payload.pusher.email}</h2>
